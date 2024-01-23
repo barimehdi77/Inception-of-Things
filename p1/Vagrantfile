@@ -1,6 +1,10 @@
 Vagrant.configure("2") do |config|
   config.vm.box = "generic/centos7"
 
+  config.vm.synced_folder ".", "/tmp"
+
+
+
   # config.vm.network "private_network", ip: "192.168.56.110" # read more about this one in the network page (vagrant docs)
 
   config.vm.define "mbariS" do |master|
@@ -19,10 +23,16 @@ Vagrant.configure("2") do |config|
     worker.vm.network "private_network", ip: "192.168.56.111"
     worker.vm.provider "virtualbox" do |v|
       v.name = "mbariSW"
-      v.memory = "1024"
-      v.cpus = "2"
+      v.memory = "512"
+      v.cpus = "1"
     end
-    # worker.vm.provision 'shell', path: "scripts/k3s_installer_as_master.sh"
+    worker.vm.provision 'shell', path: "scripts/k3s_installer_as_agent.sh"
   end
 
 end
+
+# curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="agent --server https://192.168.56.110:6443 --tok
+# en K1016c978ac5512d9f3afff9d36866cef1fa26106eccd8f30da5d00977596be5ec6::server:60a1b7f000dc3386267955bb41f93ce0" sh -s
+#  -
+
+# curl -sfL https://get.k3s.io | K3S_URL="https://192.168.56.110:6443" K3S_TOKEN="K108125ca958cbdb5418ee89ac56da3c3ba8a6c7831c94de9b82ea70dfbf111cd86::server:f80d195d6435a777b61519188d47b74a" sh -
