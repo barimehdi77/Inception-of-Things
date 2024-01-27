@@ -1,0 +1,18 @@
+
+
+Vagrant.configure("2") do |config|
+  config.vm.box = "generic/centos7"
+
+  config.vm.synced_folder ".", "/vagrant"
+
+  config.vm.define "Testing Machine" do |master|
+    master.vm.provider "virtualbox" do |v|
+      v.name = "Testing Machine"
+      v.memory = "1024"
+      v.cpus = "2"
+    end
+    master.vm.provision 'shell', path: "scripts/install_k3s.sh"
+    # master.vm.provision 'shell', inline: "k3s kubectl apply -f pods/fifo-pod.yml"
+  end
+
+end
