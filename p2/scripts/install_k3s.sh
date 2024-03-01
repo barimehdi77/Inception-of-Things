@@ -11,4 +11,4 @@ curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="server" sh -s - --write-kubecon
 # # Create a default sa
 # /usr/local/bin/kubectl create sa default
 # # create the pods in the ../pods/fifo-pod.yml
-# /usr/local/bin/kubectl apply -f /vagrant/pods/fifo-pod.yml
+/usr/local/bin/kubectl apply -f /vagrant/confs/app-one.yaml
