@@ -1,7 +1,7 @@
 apiVersion: apps/v1 # the app/v1 is the apropriate for Deployments
 kind: Deployment # indicating that this configuration file is defining a Deployment
 metadata:
-  name: app1.com # The deployment name
+  name: app3.com # The deployment name
   labels:
     app: nginx
 spec: # This section defines the desired state of the Deployment
