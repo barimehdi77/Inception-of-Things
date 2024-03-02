@@ -1,20 +1,20 @@
 apiVersion: apps/v1 # the app/v1 is the apropriate for Deployments
 kind: Deployment # indicating that this configuration file is defining a Deployment
 metadata:
-  name: app3.com # The deployment name
+  name: app3-com # The deployment name
   labels:
-    app: nginx
+    app: app3-com
 spec: # This section defines the desired state of the Deployment
   selector:
     matchLabels:
-      app: nginx
+      app: app3-com
   template:
     metadata:
       labels:
-        app: nginx # indicate the label of the pods will be created using this template
+        app: app3-com # indicate the label of the pods will be created using this template
     spec:
       containers:
-      - name: nginx # Assigns a name to the container
-        image: nginx:1.14.2 # Docker image to use for this container
+      - name: app3-com # Assigns a name to the container
+        image: holysemicolon/uwu-nginx:1.0 # Docker image to use for this container
         ports: # Defines the ports to open in the container
         - containerPort: 80 # dicates that the container will listen on port 80
