@@ -16,6 +16,6 @@ spec: # This section defines the desired state of the Deployment
     spec:
       containers:
       - name: app2-com # Assigns a name to the container
-        image: holysemicolon/uwu-nginx:1.0 # Docker image to use for this container
+        image: nginx:1.14.2 # Docker image to use for this container
         ports: # Defines the ports to open in the container
         - containerPort: 80 # dicates that the container will listen on port 80
