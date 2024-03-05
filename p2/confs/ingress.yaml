@@ -1,30 +1,49 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ingress-wildcard-host
+  name: ingress-app
 spec:
   rules:
-  
-  - host: "app1.com"
+  - host: app1.com
     http:
-      backend:
-        service:
-          name: app1.com-service
-          port:
-            number: 80
+      paths:
+      - pathType: Prefix
+        path: /
+        backend:
+          service:
+            name: app1-com
+            port:
+              number: 80
 
-  - host: "app2.com"
+  - host: app2.com
     http:
-      backend:
-        service:
-          name: app2.com-service
-          port:
-            number: 80
+        paths:
+        - pathType: Prefix
+          path: /
+          backend:
+            service:
+              name: app2-com
+              port:
+                number: 80
 
-  - host: "app3.com"
+  - host: app3.com
     http:
-      backend:
-        service:
-          name: app3.com-service
-          port:
-            number: 80
+      paths:
+      - pathType: Prefix
+        path: /
+        backend:
+          service:
+            name: app3-com
+            port:
+              number: 80
+
+  - host:
+    http:
+      paths:
+      - pathType: Prefix
+        path: /
+        backend:
+          service:
+            name: appone
+            port:
+              number: 80
